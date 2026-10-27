@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>OSMANLI SULTANAT 3D</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+  <div id="game"></div>
+
+  <div id="hud">
+    <h1>☾ OSMANLI SULTANAT</h1>
+    <div id="subtitle">RISE OF AN EMPIRE · 3D PROTOTYPE</div>
+
+    <div class="panel">
+      ❤️ Health: <span id="health">100</span>
+      &nbsp; ⚔️ Defeated: <span id="score">0</span>
+    </div>
+
+    <div id="message">
+      Explore the city. Defeat the enemy guards!
+    </div>
+  </div>
+
+  <div id="hint">
+    WASD / Arrow keys to move · Space to jump · J to attack
+  </div>
+
+  <div id="controls">
+    <div class="pad">
+      <button class="ctrl up" data-key="up">▲</button>
+      <button class="ctrl left" data-key="left">◀</button>
+      <button class="ctrl down" data-key="down">▼</button>
+      <button class="ctrl right" data-key="right">▶</button>
+    </div>
+
+    <div class="actions">
+      <button class="ctrl" data-key="jump">JUMP<br>⬆</button>
+      <button class="ctrl" data-key="attack">ATTACK<br>⚔</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
