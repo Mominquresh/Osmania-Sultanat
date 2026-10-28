@@ -10,22 +10,47 @@
     65, innerWidth / innerHeight, 0.1, 250
   );
 
-  const renderer = new THREE.WebGLRenderer({ antialias: true });
-  renderer.setSize(innerWidth, innerHeight);
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 1.7));
-  renderer.outputEncoding = THREE.sRGBEncoding;
-  renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-  mount.appendChild(renderer.domElement);
+const renderer = new THREE.WebGLRenderer({
+  antialias: true,
+  powerPreference: "high-performance"
+});
 
-  scene.add(new THREE.HemisphereLight(0xc6e5ff, 0x64513b, 2));
+renderer.setSize(innerWidth, innerHeight);
+renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
 
-  const sun = new THREE.DirectionalLight(0xffe0a3, 2.3);
-  sun.position.set(-25, 40, 20);
-  sun.castShadow = true;
-  sun.shadow.mapSize.set(1024, 1024);
-  scene.add(sun);
+renderer.outputEncoding = THREE.sRGBEncoding;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.05;
 
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+mount.appendChild(renderer.domElement);
+
+scene.add(
+  new THREE.HemisphereLight(0xc8d9ed, 0x51402e, 1.35)
+);
+
+const ambient = new THREE.AmbientLight(0xffffff, 0.25);
+scene.add(ambient);
+
+const sun = new THREE.DirectionalLight(0xffd29a, 2.5);
+
+sun.position.set(-20, 35, 18);
+sun.castShadow = true;
+sun.shadow.mapSize.set(1536, 1536);
+
+sun.shadow.camera.left = -28;
+sun.shadow.camera.right = 28;
+sun.shadow.camera.top = 28;
+sun.shadow.camera.bottom = -28;
+sun.shadow.camera.near = 1;
+sun.shadow.camera.far = 90;
+sun.shadow.bias = -0.0004;
+
+scene.add(sun);
+
+  
   const mat = (color, roughness = 0.9) =>
     new THREE.MeshStandardMaterial({ color, roughness });
 
